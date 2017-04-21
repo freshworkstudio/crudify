@@ -1,0 +1,29 @@
+{
+    "name": "freshwork/crudify",
+    "description": "Laravel CRUD helper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "GTW",
+            "email": "gotowash@sacoweas.cl"
+        },
+        {
+            "name": "Eduardo Aguad",
+            "email": "eduaguad@gmail.com"
+        },
+        {
+            "name": "Gonzalo De Spirito",
+            "email": "gonzalo@freshworkstudio.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Crudify\\": "src/"
+        },
+        "classmap": [
+            "src/wss"
+        ]
+    },
+    "require": {}
+}
