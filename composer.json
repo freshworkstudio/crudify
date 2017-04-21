@@ -20,10 +20,9 @@
     "autoload": {
         "psr-4": {
             "Crudify\\": "src/"
-        },
-        "classmap": [
-            "src/wss"
-        ]
+        }
     },
-    "require": {}
+    "require": {
+        "illuminate/support": "^5.4"
+    }
 }

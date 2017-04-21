@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Crudify;
 
 use Illuminate\Support\ServiceProvider;
 
