@@ -17,6 +17,7 @@ abstract class Crud
         'create'
     ];
     protected $model;
+    protected $name;
     protected $routes;
     protected $customFunctions = [];
 
@@ -24,7 +25,9 @@ abstract class Crud
      * Crud constructor.
      */
     public function __construct() {
-        Route::resource($route, get_called_class(), ['only' => self::DEFAULT_ROUTES]);
+        Route::resource($this->name, get_called_class(), ['only' => self::DEFAULT_ROUTES]);
+
+//        dd(Route::get())
     }
 
     /**
