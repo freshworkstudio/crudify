@@ -1,4 +1,4 @@
-<?php
+<?php namespace Crudify;
 /**
  * Created by PhpStorm.
  * User: eaguad
@@ -6,13 +6,7 @@
  * Time: 21:19
  */
 
-namespace Crudify;
-
 class CrudManager
 {
-
-    // MANEJA TODOS LOS CRUDS
-    // TIENE MUCHOS CRUDITEM
-
 
 }

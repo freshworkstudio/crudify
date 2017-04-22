@@ -1,4 +1,6 @@
 <?php
+
+namespace Crudify;
 /**
  * Created by PhpStorm.
  * User: eaguad
@@ -6,54 +8,49 @@
  * Time: 21:20
  */
 
-namespace Crudify;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-class Crud
+abstract class Crud
 {
-    // class
+    const DEFAULT_ROUTES = [
+        'create'
+    ];
     protected $model;
-    protected $name;
     protected $routes;
     protected $customFunctions = [];
 
-
+    /**
+     * Crud constructor.
+     */
     public function __construct() {
-
-        // public routes
-
-        foreach($this->routes as $route) {
-            Route::resource($this->name, get_called_class());
-        }
-
-        foreach($this->customFunctions as $route) {
-            Route::resource($this->name, get_called_class());
-        }
+        Route::resource($route, get_called_class(), ['only' => self::DEFAULT_ROUTES]);
     }
 
-    protected function beforeCreate() {
-        //
+    /**
+     * @param Request $request
+     * @return array
+     */
+    protected function beforeCreate(Request $request) {
+        return $request->all();
     }
 
     protected function afterCreate() {
-
     }
 
-    protected function create() {
-        $this->beforeCreate();
+    /**
+     * @param Request $request
+     */
+    protected function create(Request $request) {
+        $params = $this->beforeCreate($request);
 
         $obj = new $this->model();
-
-        $attrs = $obj->getAttributes();
-
-        foreach($attrs as $attr) {
-            $obj[$attr] = $params[$attr];
-        }
-
+        $obj->fill($params);
         $obj->save();
 
-        $this->afterCreate();
+        dd($obj);
+
+        $this->afterCreate($obj);
     }
 
 }

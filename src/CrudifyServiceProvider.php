@@ -2,7 +2,10 @@
 
 namespace Crudify;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
+
+use App\Http\Cruds\User;
 
 class CrudifyServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,6 @@ class CrudifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        (new User());
     }
 }
