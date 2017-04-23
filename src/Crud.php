@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 abstract class Crud
 {
     const DEFAULT_ROUTES = [
-        'create'
+        'store'
     ];
     protected $model;
     protected $name;
@@ -33,29 +33,25 @@ abstract class Crud
      * @param Request $request
      * @return array
      */
-    protected function beforeCreate(Request $request) {
+    protected function beforeStore(Request $request) {
         return $request->all();
     }
 
-    protected function afterCreate() {
+    protected function afterStore($obj) {
+        return $obj;
     }
 
     /**
      * @param Request $request
      */
-    public function create(Request $request) {
-        dd($request);
-        $params = $this->beforeCreate($request);
-
-        dd($params);
+    public function store(Request $request) {
+        $params = $this->beforeStore($request);
 
         $obj = new $this->model();
         $obj->fill($params);
         $obj->save();
 
-        dd($obj);
-
-        $this->afterCreate($obj);
+        return $this->afterStore($obj);
     }
 
 }
