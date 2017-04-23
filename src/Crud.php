@@ -26,7 +26,6 @@ abstract class Crud
      */
     public function __construct() {
         Route::resource($this->name, get_called_class(), ['only' => self::DEFAULT_ROUTES]);
-
 //        dd(Route::get())
     }
 
@@ -44,8 +43,11 @@ abstract class Crud
     /**
      * @param Request $request
      */
-    protected function create(Request $request) {
+    public function create(Request $request) {
+        dd($request);
         $params = $this->beforeCreate($request);
+
+        dd($params);
 
         $obj = new $this->model();
         $obj->fill($params);
